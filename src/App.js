@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Header } from "./components/Header";
+import { Balance } from "./components/balance";
+import { IncomeExpenses } from "./components/IncExp";
+import { TransactionList } from "./components/Transactionlist";
+import { AddTransaction } from "./components/AddTrans";
+import { Cda } from "./components/Date";
+import "./App.css";
+import {initNotification} from './services/firebaseservice';
+import {GlobalProvider} from './context/GlobalState';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <GlobalProvider>
+    <div>
+      <Header></Header>
+      <Balance></Balance>
+      <IncomeExpenses></IncomeExpenses>
+      <TransactionList></TransactionList>
+      <AddTransaction></AddTransaction>
+      <Cda></Cda>
+      <button onClick={initNotification}>Configure Notification</button>
     </div>
+    </GlobalProvider>
   );
 }
 
